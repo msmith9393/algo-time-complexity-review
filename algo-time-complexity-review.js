@@ -1,91 +1,103 @@
 /////////// Prompt 1 ///////////
 /////////// time complexity: 
+// n is array length
 function findMax(array){
-  var max = -Infinity;
-  for (var i = 0; i < array.length; i++){
-    if (array[i] > max){
-      max = array[i];
+  var max = -Infinity; //1
+  for (var i = 0; i < array.length; i++){ //n
+    if (array[i] > max){ //1
+      max = array[i]; //0 or 1
     }
   }
-  return max; 
+  return max; //1
 }
+// ((1+1)*n) + 1 + 1 = 2n + 2 => O(n)
 
 
 /////////// Prompt 2 ///////////
-/////////// time complexity: 
+/////////// time complexity:
+// n is array.length
 function contains(array, target){
-  return array.indexOf(target) > -1;
+  return array.indexOf(target) > -1; // n
 }
-
+// O(n)
 
 /////////// Prompt 3 ///////////
 /////////// time complexity: 
+// n is array.length
 function partialContains(array, target, start){
-  return array.slice(start).indexOf(target) > -1;
+  return array.slice(start).indexOf(target) > -1; // n+n
 }
-
+//2n O(n)
 
 /////////// Prompt 4 ///////////
-/////////// time complexity: 
+/////////// time complexity:
+// n is array.length
 function square(array){
-  for (var i = 0; i < 3; i++){
-    array[i] = array[i] * array[i];
+  for (var i = 0; i < 3; i++) { // 3
+    array[i] = array[i] * array[i]; // 1
   }
-  return array;
+  return array; // 1
 }
+// (3 * 1) + 1 => 4
 
 /////////// Prompt 5 ///////////
 /////////// time complexity: 
+// n is array length
 function repeat(array){
-  var repeat = [];
-  for (var j = 0; j < 10; j++){
-    repeat[j] = [];
-    for (var i = 0; i < array.length; i++){
-      repeat[j].push(array[i]);
+  var repeat = []; // 1
+  for (var j = 0; j < 10; j++){ // 1
+    repeat[j] = []; // 1
+    for (var i = 0; i < array.length; i++){ // n
+      repeat[j].push(array[i]); // 1
     }
   }
-  return repeat; 
+  return repeat; // 1
 }
+// O(n)
 //what if we replace 10 with a parameter? 
 
 
 /////////// Prompt 6 ///////////
-/////////// time complexity: 
+/////////// time complexity:
+// n is the smaller of num1 or num2
 function gcf(num1, num2){
   if (num1 > num2){ //this ensures num1 is the smaller number
     var temp = num1;
     num1 = num2;
     num2 = temp;
   }
-  for (var i = num1; i > 1; i--){
-    if (num1 % i === 0 && num2 % i === 0){
-      return i;
+  for (var i = num1; i > 1; i--){ // n
+    if (num1 % i === 0 && num2 % i === 0){ //2
+      return i; //1
     }
   }
-  return 1;
+  return 1;// 1
 }
-
+//O(n)
 
 /////////// Prompt 7 ///////////
 /////////// time complexity: 
+// n = str.len
 function countChar(string){
-  var counts = {};
-  var currChar, currCharCount;
-  for (var i = 0; i < string.length; i++){
-    currChar = string[i];
-    currCharCount = 1;
-    for (var j = i+1; j < string.length; j++){
-      if (currChar === string[j]){
-        currCharCount++;
+  var counts = {}; //1
+  var currChar, currCharCount; //1
+  for (var i = 0; i < string.length; i++){ //n
+    currChar = string[i]; //1
+    currCharCount = 1;//1
+    for (var j = i+1; j < string.length; j++){ // n - j
+      if (currChar === string[j]){ //1
+        currCharCount++; //1
       }
     }
-    if (!counts.hasOwnProperty(currChar)){
-      counts[currChar] = currCharCount;
+    if (!counts.hasOwnProperty(currChar)){ //1
+      counts[currChar] = currCharCount; //1
     }
   }
-  return counts;
+  return counts; //1
 }
+// n^2\
 
+// 3n + sum n-1 ... n-n
 
 /////////// Prompt 8 ///////////
 /////////// time complexity: 
@@ -99,6 +111,7 @@ var factorial = function(num){
     return num * factorial(num-1);
   }
 }
+// O(n)
 
 
 /////////// Prompt 9 ///////////
@@ -117,6 +130,8 @@ function tournament(players){
     return tournament(results);
   }
 }
+
+// O(log n) dividing by 3 every time log base 3
 
 
 
@@ -139,6 +154,10 @@ function allPasswords(allowedChars, maxLength){
   findPassword([]);
   return results;
 }
+
+// exponential O(c^n)
+// c num char in alphabet
+// n num char in password
 
 
 /////////// Prompt 11 ///////////
@@ -185,6 +204,8 @@ function findColor(quadTree, coordinates){
     }
   }
 }
+
+// O(log n) // dividing it by 4 each time log base 4
 
 
 
